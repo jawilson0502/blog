@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('static/flowers.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1>All Blog Posts</h1>
+          <hr class="small">
+          <span class="subheading">Every blog post in descending order</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <hr>
+        {% for entry in entries %}
+          <div class='post-preview'>
+            <a href="{{ url_for('post', blog_id=entry.id) }}">
+              <h2 class='post-title'>{{ entry.title }}</h2>
+              <h3 class='post-subtitle'>{{ entry.subtitle }}</h3></a>
+              <p class='post-meta'>Posted by Jessica Wilson on 
+                                  {{ entry.date }}</p>
+          </div>
+          <hr>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('static/Fox.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1>Jessica's Blog</h1>
+          <hr class="small">
+          <span class="subheading">An overview of my adventures in Info Sec, 
+            and IT in general</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h2>Welcome to my blog! Here I plan on laying out my adventures
+          in Information Security, what I've learned, and what I've done.</h2>
+      <hr>
+        {% for entry in entries %}
+          <div class='post-preview'>
+            <a href="{{ url_for('post', blog_id=entry.id) }}">
+              <h2 class='post-title'>{{ entry.title }}</h2>
+              <h3 class='post-subtitle'>{{ entry.subtitle }}</h3></a>
+              <p class='post-meta'>Posted by Jessica Wilson on 
+                                  {{ entry.date}}</p>
+          </div>
+          <hr>
+        {% endfor %}
+
+<!-- Pager -->
+            <ul class="pager">
+                <li class="next">
+                    <a href="{{ url_for('allposts') }}">Older Posts &rarr;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
